@@ -19,19 +19,18 @@ router.get("/", ({ response }: any) => {
 // User Routes
 
 router
-  .get("/users", userController.getAllUsers)
   .get("/users/:id", userController.getUser)        // Gets the list of the current user
   .post("/users/login", userController.login)
   .post("/users/register", userController.register)
   .delete("/users/:id", userController.deleteUser)
 
 // list routes
- 
+
 router
-  .get("/lists/:id", listController.getListItem)
-  .post("/lists", listController.postListItem)
-  .delete("/lists/:id", listController.deleteListItem)
-  .patch("/lists/:id", listController.editListItem)
+  .post("/lists", listController.postItem)
+  .get("/lists/:id", listController.getItem)
+  .delete("/lists/:id", listController.deleteItem)
+  .patch("/lists/:id", listController.editItem)
 
 app.use(router.routes());
 app.use(router.allowedMethods());

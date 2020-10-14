@@ -1,23 +1,9 @@
-import { v4 } from "https://deno.land/std@0.74.0/uuid/mod.ts";
+import { Request, Response } from "https://deno.land/x/oak/mod.ts";
 
 export default {
-    getAllUsers: () => {},
-    getUser: () => {},
-
-    register: async ({request, response }: any) => {
-        const body = await request.body().value;
-        let newUser = {
-            id: v4.generate(),
-            name: body.name,
-            isCompleted: false
-        }
-
-        response.body = {
-            message: "here is your User",
-            user: newUser
-        }
-    },
-    login: () => {},
-    
-    deleteUser: () => {}
+    register: ({request, response}: {request: Request, response: Response}) => {},
+    login: ({request, response}: {request: Request, response: Response}) => {},
+    getUser: ({request, response}: {request: Request, response: Response}) => {},
+    getAll: ({request, response}: {request: Request, response: Response}) => {},
+    deleteUser: ({request, response}: {request: Request, response: Response}) => {}
 }

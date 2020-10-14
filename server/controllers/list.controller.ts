@@ -1,8 +1,9 @@
-import { v4 } from "https://deno.land/std@0.74.0/uuid/mod.ts";
+import { Request, Response } from "https://deno.land/x/oak/mod.ts";
 
 export default {
-    getListItem: () => {},
-    postListItem: () => {},
-    editListItem: () => {},
-    deleteListItem: () => {}
+    getAll: ({request, response}: {request: Request, response: Response}) => {},
+    getItem: ({request, response}: {request: Request, response: Response}) => {},
+    postItem: ({request, response}: {request: Request, response: Response}) => {},
+    editItem: ({request, response}: {request: Request, response: Response}) => {},
+    deleteItem: ({request, response}: {request: Request, response: Response}) => {}
 }
