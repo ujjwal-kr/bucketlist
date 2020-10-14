@@ -1,17 +1,37 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 import { green, yellow } from "https://deno.land/std@0.53.0/fmt/colors.ts";
 
+import userController from "./controllers/user.controller.ts";
+import listController from "./controllers/list.controller.ts";
+
 const app = new Application();
 const port: number = 8080;
 
 const router = new Router();
 
-router.get("/", ({ response }: { response: any }) => {
+router.get("/", ({ response }: any) => {
   console.log("Incoming Request");
   response.body = {
     message: "Helloworld",
   };
 });
+
+// User Routes
+
+router
+  .get("/users", userController.getAllUsers)
+  .get("/users/:id", userController.getUser)        // Gets the list of the current user
+  .post("/users/login", userController.login)
+  .post("/users/register", userController.register)
+  .delete("/users/:id", userController.deleteUser)
+
+// list routes
+
+router
+  .get("/lists/:id", listController.getListItem)
+  .post("/lists", listController.postListItem)
+  .delete("/lists/:id", listController.deleteListItem)
+  .patch("/lists/:id", listController.editListItem)
 
 app.use(router.routes());
 app.use(router.allowedMethods());
