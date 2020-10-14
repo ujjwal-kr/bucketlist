@@ -1,9 +1,9 @@
 import React from 'react';
-import './App.css';
+import Home from './home/home';
 
 function App() {
   return (
-    <h1>Hey</h1>
+    <Home />
   )
 }
 
