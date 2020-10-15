@@ -1,5 +1,5 @@
 export interface ListItem {
-    id?: string;
+    _id?: string;
     text?: string;
     dateCreated?: any;
     completed?: boolean;

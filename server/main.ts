@@ -1,10 +1,14 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 import { green, yellow } from "https://deno.land/std@0.53.0/fmt/colors.ts";
+import { MongoClient } from "https://deno.land/x/mongo@v0.12.1/mod.ts";
 
 import userController from "./controllers/user.controller.ts";
 import listController from "./controllers/list.controller.ts";
 
-// const users = db.collection<UserSchema>("users");
+const client = new MongoClient();
+client.connectWithUri("mongodb://localhost:27017");
+
+const db = client.database("bucketlist");
 
 const app = new Application();
 const port: number = 8080;
