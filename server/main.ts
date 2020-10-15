@@ -4,6 +4,8 @@ import { green, yellow } from "https://deno.land/std@0.53.0/fmt/colors.ts";
 import userController from "./controllers/user.controller.ts";
 import listController from "./controllers/list.controller.ts";
 
+// const users = db.collection<UserSchema>("users");
+
 const app = new Application();
 const port: number = 8080;
 
