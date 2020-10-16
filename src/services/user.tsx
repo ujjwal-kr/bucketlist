@@ -7,7 +7,7 @@ export const UserService = {
     },
 
     login: async function({email, password}: any) {
-        return await axios.post(ENDPOINT+"auth/login", {name, password})
+        return await axios.post(ENDPOINT+"auth/login", {email, password})
     },
 
     getUser: async function(id: string) {
