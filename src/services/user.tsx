@@ -14,8 +14,10 @@ export const UserService = {
         return await axios.get(ENDPOINT+"users/"+id)
     },
 
-    getAll: async function() {
-        return await axios.get(ENDPOINT+"users")
+    getAll: async function(token: string) {
+        return await axios.get(ENDPOINT+"users", {
+            headers: {'authorization': token}
+        })
     },
 
     deleteUser: async function(id: string, token: string) {

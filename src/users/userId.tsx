@@ -3,7 +3,7 @@ import React from 'react';
 interface Props {}
 interface State {}
 
-class UsersComponent extends React.Component<Props, State> {
+class UserId extends React.Component<Props, State> {
     render() {
         return (
             <div>
@@ -13,4 +13,4 @@ class UsersComponent extends React.Component<Props, State> {
     }
 }
 
-export default UsersComponent;
+export default UserId;
