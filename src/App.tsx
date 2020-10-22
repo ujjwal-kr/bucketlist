@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import UserId from './users/userId';
 import UsersComponent from './users/users';
 import ListComponent from './list/list';
+import Weekly from './weekly/weekly';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/users" component={UsersComponent} />
           <Route path="/users/:id" component={UserId} />
           <Route path="/lists/:id" component={ListComponent} />
+          <Route path="/weekly/:id" component={Weekly} />
       </Switch>
     </BrowserRouter>
   )
