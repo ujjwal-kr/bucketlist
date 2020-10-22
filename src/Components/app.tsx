@@ -11,3 +11,17 @@ export const Overlay = styled.div`
     width: 100%;
     height: 100vh;
 `
+export const Wrapper = styled.div`
+    text-align: center;
+    width: 90%;
+    padding: 5%;
+    color: white;
+`
+
+export const Brand = styled.h1`
+    font-size: 3.4em;
+`
+
+export const BrandText = styled.p`
+    font-size: 1.3em;
+`
