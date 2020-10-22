@@ -9,7 +9,7 @@ export const Main = styled.div`
 `
 
 export const Overlay = styled.div`
-    background: rgba(0, 0, 0, 0.28);
+    background: rgba(0, 0, 0, 0.32);
     width: 100%;
     height: 100vh;
 `
@@ -23,8 +23,10 @@ export const Wrapper = styled.div`
 
 export const Brand = styled.h1`
     font-size: 3.4em;
+    text-shadow: 0 0 4px black;
 `
 
 export const BrandText = styled.p`
     font-size: 1.3em;
+    text-shadow: 0 0 3.2px black;
 `
