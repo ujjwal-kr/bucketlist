@@ -9,13 +9,13 @@ import Weekly from './weekly/weekly';
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
+        <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/users" component={UsersComponent} />
           <Route path="/users/:id" component={UserId} />
           <Route path="/lists/:id" component={ListComponent} />
           <Route path="/weekly/:id" component={Weekly} />
-      </Switch>
+        </Switch>
     </BrowserRouter>
   )
 }

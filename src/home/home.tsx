@@ -1,22 +1,17 @@
-import React from 'react';
+import React from "react";
+import { Main, Overlay } from "../Components/app";
 
 interface Props {}
-
-interface State {
-    count: number;
-}
-
+interface State {}
 
 class Home extends React.Component<Props, State> {
-    state: State = {
-        count: 0
-    }
-
     render() {
-        return <div>Meow</div>
+        return <Main>
+            <Overlay>
+                
+            </Overlay>
+        </Main>;
     }
-
-
 }
 
 export default Home;
