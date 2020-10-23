@@ -5,6 +5,8 @@ import UserId from './users/userId';
 import UsersComponent from './users/users';
 import ListComponent from './list/list';
 import Weekly from './weekly/weekly';
+import Signup from './Auth/signup';
+import Login from './Auth/login';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/users/:id" component={UserId} />
           <Route path="/lists/:id" component={ListComponent} />
           <Route path="/weekly/:id" component={Weekly} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
         </Switch>
     </BrowserRouter>
   )
