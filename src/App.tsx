@@ -7,6 +7,7 @@ import ListComponent from './list/list';
 import Weekly from './weekly/weekly';
 import Signup from './Auth/signup';
 import Login from './Auth/login';
+import 'animate.css';
 
 function App() {
   return (

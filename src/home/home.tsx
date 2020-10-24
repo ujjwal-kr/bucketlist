@@ -4,7 +4,6 @@ import '../fonts.css'
 import {Button} from '@material-ui/core';
 import { UserService } from "../services/user";
 
-
 interface Props {}
 interface State {
     loggedIn: boolean;
@@ -35,7 +34,7 @@ class Home extends React.Component<Props, State> {
     render() {
         return <Main>
             <Overlay>
-                <Wrapper>
+                <Wrapper className="animate__animated animate__zoomIn animate__faster">
                     <Brand className="branding">Bucketlist</Brand>
                     <br/>
                     <BrandText className="quicktext">
