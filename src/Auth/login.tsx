@@ -1,4 +1,6 @@
 import React from 'react';
+import { Main } from '../Components/app';
+import { Heading } from '../Components/auth';
 
 interface Props {}
 interface State {}
@@ -6,9 +8,9 @@ interface State {}
 class Login extends React.Component<Props,State>{
     render() {
         return (
-            <div>
-                Login
-            </div>
+            <Main>
+                <Heading className="stylish">Login</Heading>
+            </Main>
         )
     }
 }

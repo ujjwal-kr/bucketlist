@@ -8,6 +8,7 @@ import Weekly from './weekly/weekly';
 import Signup from './Auth/signup';
 import Login from './Auth/login';
 import 'animate.css';
+import './fonts.css'
 
 function App() {
   return (
