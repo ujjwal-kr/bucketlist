@@ -17,9 +17,9 @@ const Login = () => {
 
     return (
         <Main>
-            <Heading className="stylish">Login</Heading>
+            <Heading className="stylish animate__animated animate__zoomIn animate__faster">Login</Heading>
             <br />
-            <form onSubmit={formik.handleSubmit} style={{ textAlign: 'center' }}>
+            <form onSubmit={formik.handleSubmit} style={{ textAlign: 'center' }} className="animate__animated animate__zoomIn animate__faster">
                 <TextField
                     onChange={formik.handleChange}
                     value={formik.values.email}
