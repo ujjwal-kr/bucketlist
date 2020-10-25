@@ -3,14 +3,14 @@ import React from 'react';
 interface Props {}
 interface State {}
 
-class Weekly extends React.Component<Props, State>{
+class Tasks extends React.Component<Props, State>{
     render() {
         return (
             <div>
-                Weekly
+                Tasks
             </div>
         )
     }
 }
 
-export default Weekly;
+export default Tasks;
