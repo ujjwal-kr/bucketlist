@@ -9,7 +9,7 @@ export const Main = styled.div`
 `
 
 export const Overlay = styled.div`
-    background: rgba(0, 0, 0, 0.23);
+    background: rgba(0, 0, 0, 0.2);
     width: 100%;
     height: 100vh;
 `

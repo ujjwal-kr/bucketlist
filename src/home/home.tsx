@@ -4,7 +4,7 @@ import { Button } from "@material-ui/core";
 import { UserService } from "../services/user";
 import { Link } from "react-router-dom";
 
-interface Props { }
+interface Props {}
 interface State {
     loggedIn: boolean;
     user: any; // TODO
