@@ -1,18 +1,49 @@
-import React from 'react';
-import { Main } from '../Components/app';
-import { Heading } from '../Components/auth';
+import React from "react";
+import { Main } from "../Components/app";
+import { Heading } from "../Components/auth";
+import { Button, TextField } from "@material-ui/core";
+import { useFormik } from "formik";
 
-interface Props {}
-interface State {}
+const Login = () => {
+    const formik = useFormik({
+        initialValues: {
+            email: "",
+            password: "",
+        },
+        onSubmit: (values) => {
+            console.log(values);
+        },
+    });
 
-class Login extends React.Component<Props,State>{
-    render() {
-        return (
-            <Main>
-                <Heading className="stylish">Login</Heading>
-            </Main>
-        )
-    }
-}
+    return (
+        <Main>
+            <Heading className="stylish">Login</Heading>
+            <br />
+            <form onSubmit={formik.handleSubmit} style={{ textAlign: 'center' }}>
+                <TextField
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                    name="email"
+                    label="Email"
+                    variant="filled"
+                    style={{ background: 'white' }}
+                    color="secondary"
+                />
+                <br/> <br/>
+                <TextField
+                    onChange={formik.handleChange}
+                    value={formik.values.password}
+                    name="password"
+                    label="Password"
+                    variant="filled"
+                    style={{ background: 'white' }}
+                    color="secondary"
+                    type="password"
+                /> <br/><br/>
+                <Button size="large" variant="contained" color="secondary" type="submit">Submit</Button>
+            </form>
+        </Main>
+    );
+};
 
 export default Login;
