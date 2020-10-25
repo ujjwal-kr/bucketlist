@@ -3,7 +3,7 @@ import { ENDPOINT } from '../url';
 
 export const ListService = {
     getLItem: async function(id: string) {
-        return axios.get(ENDPOINT+"lists/+id")
+        return axios.get(ENDPOINT+"lists/"+id)
     },
 
     editItem: async function(id: string, item: any, token: string) {

@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 const Login = () => {
     const formik = useFormik({
         initialValues: {
-            email: "",
+            username: "",
             password: "",
         },
         onSubmit: (values) => {
@@ -23,9 +23,9 @@ const Login = () => {
                 <form onSubmit={formik.handleSubmit} style={{ textAlign: 'center' }} className="animate__animated animate__zoomIn animate__faster">
                     <TextField
                         onChange={formik.handleChange}
-                        value={formik.values.email}
-                        name="email"
-                        label="Email"
+                        value={formik.values.username}
+                        name="username"
+                        label="Username"
                         variant="filled"
                         style={{ background: 'white' }}
                         color="secondary"

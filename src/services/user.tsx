@@ -2,12 +2,12 @@ import axios from 'axios';
 import { ENDPOINT } from '../url';
 
 export const UserService = {
-    register: async function({name, email, password}: any) {
-       return await axios.post(ENDPOINT+"/auth/register", {name, email, password})
+    register: async function({username, code, password}: any) {
+       return await axios.post(ENDPOINT+"/auth/register", {username, code, password})
     },
 
-    login: async function({email, password}: any) {
-        return await axios.post(ENDPOINT+"auth/login", {email, password})
+    login: async function({username, password}: any) {
+        return await axios.post(ENDPOINT+"auth/login", {username, password})
     },
 
     getUser: async function(id: string) {
@@ -17,6 +17,15 @@ export const UserService = {
     getAll: async function(token: string) {
         return await axios.get(ENDPOINT+"users", {
             headers: {'authorization': token}
+        })
+    },
+
+    getTasks: async function(token: string, id: string, code: string) {
+        return await axios.get(ENDPOINT+"users/"+id+"/tasks", {
+            headers: {
+                'authorization': token,
+                'taskCode': code
+            }
         })
     },
 
