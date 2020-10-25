@@ -7,7 +7,7 @@ export const ListService = {
     },
 
     editItem: async function(id: string, item: any, token: string) {
-        return axios.patch(ENDPOINT+"lists/"+id, {item}, {
+        return axios.patch(ENDPOINT+"lists/"+id, item, {
             headers: {'authorization': token}
         })
     },
