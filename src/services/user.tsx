@@ -2,8 +2,8 @@ import axios from 'axios';
 import { ENDPOINT } from '../url';
 
 export const UserService = {
-    register: async function({username, code, password}: any) {
-       return await axios.post(ENDPOINT+"/auth/register", {username, code, password})
+    register: async function({username, entryCode, password, taskCode}: any) {
+       return await axios.post(ENDPOINT+"auth/register", {username, entryCode, password, taskCode})
     },
 
     login: async function({username, password}: any) {

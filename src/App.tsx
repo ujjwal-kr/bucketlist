@@ -7,16 +7,17 @@ import ListComponent from './list/list';
 import Tasks from './weekly/tasks';
 import Signup from './Auth/signup';
 import Login from './Auth/login';
-import 'animate.css';
-import './fonts.css'
 import CreateList from './list/create';
 import CreateTask from './weekly/create';
+import 'animate.css';
+import './fonts.css'
 
 function App() {
   return (
     <BrowserRouter>
         <Switch>
           <Route path="/" component={Home} exact />
+
           <Route path="/users" component={UsersComponent} />
           <Route path="/users/:id" component={UserId} />
 

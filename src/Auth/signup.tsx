@@ -4,6 +4,7 @@ import { Heading } from "../Components/auth";
 import { Button, TextField } from "@material-ui/core";
 import { useFormik } from "formik";
 
+import { UserService } from '../services/user';
 
 const Signup = () => {
 
@@ -11,10 +12,20 @@ const Signup = () => {
         initialValues: {
             username: "",
             password: "",
-            code: ""
+            entryCode: "",
+            taskCode: "",
         },
         onSubmit: values => {
-            console.log(values)
+            UserService.register({
+                username: values.username, 
+                password: values.password, 
+                entryCode: values.entryCode,
+                taskCode: values.taskCode,
+            }).then(res => {
+                console.log(res.data)
+            }).catch(e => {
+                alert("Check Your Input")
+            })
         }
      })
 
@@ -46,8 +57,17 @@ const Signup = () => {
                     /> <br /><br />
                     <TextField
                         onChange={formik.handleChange}
-                        value={formik.values.code}
-                        name="code"
+                        value={formik.values.entryCode}
+                        name="entryCode"
+                        label="Your secret code"
+                        variant="filled"
+                        style={{ background: 'white' }}
+                        color="secondary"
+                    /> <br /><br />
+                    <TextField
+                        onChange={formik.handleChange}
+                        value={formik.values.taskCode}
+                        name="taskCode"
                         label="Code For Taks"
                         variant="filled"
                         style={{ background: 'white' }}
