@@ -18,9 +18,9 @@ const Login = () => {
                 password: values.password 
             }).then(res => {
                 console.log(res.data)
-                const {token, user} = res.data
+                const {token, name} = res.data
                 localStorage.setItem("token", token)
-                localStorage.setItem("user", user)
+                localStorage.setItem("name", name)
             }).catch(e => {
                 alert("Check Your input")
             })
