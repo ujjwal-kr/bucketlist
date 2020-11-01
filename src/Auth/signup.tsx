@@ -34,7 +34,7 @@ const Signup = () => {
             <Overlay>
                 <Heading className="stylish animate__animated animate__zoomIn animate__faster">SignUp</Heading>
                 <br />
-                <form onSubmit={formik.handleSubmit} style={{ textAlign: 'center' }} className="animate__animated animate__zoomIn animate__faster">
+                <form onSubmit={formik.handleSubmit} style={{ textAlign: 'center' }} className="animate__animated animate__zoomIn animate__faster" id="form">
                     <TextField
                         onChange={formik.handleChange}
                         value={formik.values.username}

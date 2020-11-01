@@ -4,6 +4,8 @@ import { Heading } from "../Components/auth";
 import { Button, TextField } from "@material-ui/core";
 import { useFormik } from "formik";
 
+import { UserService } from "../services/user";
+
 const Login = () => {
     const formik = useFormik({
         initialValues: {
@@ -11,7 +13,17 @@ const Login = () => {
             password: "",
         },
         onSubmit: (values) => {
-            console.log(values);
+            UserService.login({ 
+                username: values.username, 
+                password: values.password 
+            }).then(res => {
+                console.log(res.data)
+                const {token, user} = res.data
+                localStorage.setItem("token", token)
+                localStorage.setItem("user", user)
+            }).catch(e => {
+                alert("Check Your input")
+            })
         },
     });
 
