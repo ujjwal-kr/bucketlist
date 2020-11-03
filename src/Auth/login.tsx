@@ -20,9 +20,10 @@ const Login: FunctionComponent  = () => {
                 password: values.password 
             }).then(res => {
                 console.log(res.data)
-                const {token, name} = res.data
+                const {token, name, id} = res.data
                 localStorage.setItem("token", token)
                 localStorage.setItem("name", name)
+                localStorage.setItem("id", id)
                 setRedirect(true)
             }).catch(e => {
                 alert("Check Your input")

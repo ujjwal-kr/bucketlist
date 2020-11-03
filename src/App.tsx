@@ -18,7 +18,7 @@ function App() {
         <Switch>
           <Route path="/" component={Home} exact />
 
-          <Route path="/users" component={UsersComponent} />
+          <Route path="/users" component={UsersComponent} exact />
           <Route path="/users/:id" component={UserId} />
 
           <Route path="/lists/:id" component={ListComponent} />

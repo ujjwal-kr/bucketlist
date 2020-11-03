@@ -6,7 +6,7 @@ interface State {
     users: User[];
 }
 
-interface User {
+export interface User {
     username?: string;
     id?: string;
 }
