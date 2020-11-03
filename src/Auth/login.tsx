@@ -1,12 +1,14 @@
-import React from "react";
+import React, {FunctionComponent, useState } from "react";
 import { Main, Overlay } from "../Components/app";
 import { Heading } from "../Components/auth";
 import { Button, TextField } from "@material-ui/core";
 import { useFormik } from "formik";
+import { Redirect } from 'react-router-dom';
 
 import { UserService } from "../services/user";
 
-const Login = () => {
+const Login: FunctionComponent  = () => {
+    const [redirect, setRedirect] = useState(false)
     const formik = useFormik({
         initialValues: {
             username: "",
@@ -21,11 +23,16 @@ const Login = () => {
                 const {token, name} = res.data
                 localStorage.setItem("token", token)
                 localStorage.setItem("name", name)
+                setRedirect(true)
             }).catch(e => {
                 alert("Check Your input")
             })
         },
     });
+
+    if (redirect === true) {
+        return <Redirect to="/users" />
+    }
 
     return (
         <Main>

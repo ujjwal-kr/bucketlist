@@ -22,10 +22,10 @@ function App() {
           <Route path="/users/:id" component={UserId} />
 
           <Route path="/lists/:id" component={ListComponent} />
-          <Route path="create-list" component={CreateList} />
+          <Route path="/create-list" component={CreateList} />
 
           <Route path="/tasks/:id" component={Tasks} />
-          <Route path="create-task" component={CreateTask} />
+          <Route path="/create-task" component={CreateTask} />
 
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />

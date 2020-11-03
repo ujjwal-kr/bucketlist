@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {FunctionComponent, useState} from 'react';
 import { Main, Overlay } from "../Components/app";
 import { Heading } from "../Components/auth";
 import { Button, TextField } from "@material-ui/core";
 import { useFormik } from "formik";
 
 import { UserService } from '../services/user';
+import { Redirect } from 'react-router-dom';
 
-const Signup = () => {
+const Signup: FunctionComponent = () => {
 
+    const [redirect, setRedirect] = useState(false)
     const formik = useFormik({ 
         initialValues: {
             username: "",
@@ -22,12 +24,16 @@ const Signup = () => {
                 entryCode: values.entryCode,
                 taskCode: values.taskCode,
             }).then(res => {
-                console.log(res.data)
+                setRedirect(true)
             }).catch(e => {
                 alert("Check Your Input")
             })
         }
      })
+
+    if(redirect === true) {
+        return <Redirect to="/login" />
+    }
 
     return (
         <Main>

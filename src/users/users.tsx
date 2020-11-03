@@ -30,7 +30,7 @@ class UsersComponent extends React.Component<Props, State> {
     render() {
         return (
             <div>
-                {this.state.users.map((i, d) => <h1 key={d}>{ i.username }</h1>)}
+                {this.state.users.map((i, d) => <h1 key={d}>{i.username}</h1>)}
             </div>
         )
     }
