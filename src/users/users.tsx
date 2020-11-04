@@ -18,7 +18,6 @@ class UsersComponent extends React.Component<Props, State> {
 
     componentDidMount() {
         UserService.getAll().then(res => {
-            console.log(res.data)
             this.setState({
                 users: res.data
             })
