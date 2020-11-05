@@ -19,7 +19,6 @@ const Login: FunctionComponent  = () => {
                 username: values.username, 
                 password: values.password 
             }).then(res => {
-                console.log(res.data)
                 const {token, name, id} = res.data
                 localStorage.setItem("token", token)
                 localStorage.setItem("name", name)

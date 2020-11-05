@@ -13,7 +13,7 @@ interface State {
 class Home extends React.Component<Props, State> {
     state: State = {
         loggedIn: false,
-        user: null,
+        user: null, 
     };
 
     async componentDidMount() {
