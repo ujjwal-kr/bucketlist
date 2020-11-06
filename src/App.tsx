@@ -24,7 +24,7 @@ function App() {
           <Route path="/lists/:id" component={ListComponent} />
           <Route path="/create-list" component={CreateList} />
 
-          <Route path="/tasks/:id" component={Tasks} />
+          <Route path="/tasks/:id/:code" component={Tasks} />
           <Route path="/create-task" component={CreateTask} />
 
           <Route path="/signup" component={Signup} />
