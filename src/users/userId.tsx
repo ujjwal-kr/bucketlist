@@ -9,6 +9,7 @@ interface Props {
         params: { id: string }
     }
 }
+
 interface State {
     user: User;
     list: List[];

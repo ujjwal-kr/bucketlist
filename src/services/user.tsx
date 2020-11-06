@@ -14,7 +14,7 @@ export const UserService = {
         return await axios.get(ENDPOINT+"users/"+id)
     },
 
-    getAll: async function() {
+    getAll: async function(token: string) {
         return await axios.get(ENDPOINT+"users", {
             headers: {'authorization': "token"}
         })

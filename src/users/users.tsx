@@ -1,7 +1,9 @@
 import React from 'react';
 import { UserService } from '../services/user';
 
-interface Props {}
+interface Props {
+    history: any
+}
 interface State {
     users: User[];
 }
@@ -17,12 +19,16 @@ class UsersComponent extends React.Component<Props, State> {
     }
 
     componentDidMount() {
-        UserService.getAll().then(res => {
+        const token = localStorage.getItem("token")!
+        if (!token) {
+            this.props.history.push('/')
+        }
+        UserService.getAll(token).then(res => {
             this.setState({
                 users: res.data
             })
         }).catch(e => {
-            console.log(e)
+            this.props.history.push('/')
         })
     }
 
