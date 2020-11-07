@@ -5,7 +5,15 @@ import { Heading } from '../Components/auth';
 
 import { TextField, Button } from '@material-ui/core';
 
-const TaskCode: FunctionComponent = function() {
+interface Props {
+    match: {
+        params: {
+            id: string;
+        }
+    }
+}
+
+const TaskCode: FunctionComponent<Props> = ({ match }) => {
 
     const formik = useFormik({
         initialValues: {
@@ -14,6 +22,7 @@ const TaskCode: FunctionComponent = function() {
         onSubmit: values => {
             const code = btoa(values.code)
             console.log(code)
+            console.log(match.params.id)
         }
     })
 
