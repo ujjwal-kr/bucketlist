@@ -11,6 +11,7 @@ import CreateList from './list/create';
 import CreateTask from './weekly/create';
 import 'animate.css';
 import './fonts.css'
+import TaskCode from './weekly/code';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/create-list" component={CreateList} />
 
           <Route path="/tasks/:id/:code" component={Tasks} />
+          <Route path="/code/:id" component={TaskCode} />
           <Route path="/create-task" component={CreateTask} />
 
           <Route path="/signup" component={Signup} />
