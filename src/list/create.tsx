@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Main, Overlay } from '../Components/app';
 import { Heading } from '../Components/auth';
 import {useFormik} from 'formik';
+import { ListService } from '../services/list';
 
-const CreateList = () => {
+interface Props {
+    history: any;
+}
+
+const CreateList = ({history}: Props) => {
+
+    const [token, setToken] = useState("")
+
+    useEffect(() => {
+        const token = localStorage.getItem("token")!
+        setToken(token)
+    }, [])
+
     const formik = useFormik({
         initialValues: {
             text: "",
             description: ""
         },
         onSubmit: (values) => {
-            console.log(values)
+            ListService.postItem(token, values.description, values.text).then(res => {
+                history.push("/users")
+            }).catch(e => {
+                alert("Invalid input or login error")
+            })
         }
     })
 
