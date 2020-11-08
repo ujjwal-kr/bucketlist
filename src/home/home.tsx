@@ -33,14 +33,20 @@ class Home extends React.Component<Props, State> {
                 <Wrapper className="animate__animated animate__zoomIn animate__faster">
                     <Brand className="branding">Bucketlist</Brand>
                     <br />
-                    <BrandText className="quicktext">
-                        Welcome, this is in testing stage so you wont be able to register
-                        unless you are a tester. You can view the source code here.
-                    </BrandText>
+                    {this.state.loggedIn
+                        ? <BrandText className="quicktext">
+                            Welcome Back !
+                          </BrandText>
+
+                        : <BrandText className="quicktext">
+                            Welcome, this is in testing stage so you wont be able to register
+                            unless you are a tester. You can view the source code here.
+                          </BrandText>
+                    }
                     <br />
                     {this.state.loggedIn
-                    ? <UserButton />
-                    : <div><LoginButton /> <RegisterButton /></div>
+                        ? <UserButton />
+                        : <div><LoginButton /> <RegisterButton /></div>
                     }
                 </Wrapper>
             </Overlay>
@@ -68,10 +74,10 @@ function RegisterButton() {
 
 function UserButton() {
     return <Link style={{ textDecoration: "none" }} to="/users">
-    <Button variant="contained" color="secondary" size="large">
-        Users
+        <Button variant="contained" color="secondary" size="large">
+            Users
     </Button>
-</Link>
+    </Link>
 }
- 
+
 export default Home;
