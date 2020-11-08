@@ -16,7 +16,7 @@ const CreateList = ({history}: Props) => {
 
     useEffect(() => {
         const token = localStorage.getItem("token")!
-        const id = localStorage.getItem("id")!
+        const id = localStorage.getItem("name")!
         setToken(token)
         setID(id)
     }, [])

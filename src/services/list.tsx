@@ -7,7 +7,7 @@ export const ListService = {
     },
 
     postItem: async function(id: string, token: string, text: string, description: string) {
-        return axios.post(ENDPOINT+"lists/"+id, {text, description}, {
+        return axios.post(ENDPOINT+"lists/", {text, description, userid:id}, {
             headers: {'authorization': token}
         })
     },
@@ -23,4 +23,5 @@ export const ListService = {
             headers: {'authorization': token}
         })
     }
+
 }
