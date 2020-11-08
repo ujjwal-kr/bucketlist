@@ -4,7 +4,7 @@ import { Button } from "@material-ui/core";
 import { UserService } from "../services/user";
 import { Link } from "react-router-dom";
 
-interface Props {}
+interface Props { }
 interface State {
     loggedIn: boolean;
     user: any; // TODO
@@ -13,19 +13,16 @@ interface State {
 class Home extends React.Component<Props, State> {
     state: State = {
         loggedIn: false,
-        user: null, 
+        user: null,
     };
 
     async componentDidMount() {
         const token = localStorage.getItem("token");
-        const user = localStorage.getItem("user");
         if (token) {
             await UserService.check(token).then((data) => {
                 this.setState({ loggedIn: true });
-                this.setState({ user: user });
             }).catch((e) => {
                 localStorage.removeItem("token");
-                localStorage.removeItem("user");
             });
         }
     }
@@ -41,22 +38,40 @@ class Home extends React.Component<Props, State> {
                         unless you are a tester. You can view the source code here.
                     </BrandText>
                     <br />
-                    <Link style={{ textDecoration: "none" }} to="/login">
-                        <Button variant="contained" color="secondary" size="large">
-                            LogIn
-                        </Button>
-                        <br />
-                        <br />
-                    </Link>
-                    <Link style={{ textDecoration: "none" }} to="/signup">
-                        <Button variant="contained" color="secondary" size="large">
-                            SignUp
-                        </Button>
-                    </Link>
+                    {this.state.loggedIn
+                    ? <UserButton />
+                    : <div><LoginButton /> <RegisterButton /></div>
+                    }
                 </Wrapper>
             </Overlay>
         </Main>;
     }
 }
 
+function LoginButton() {
+    return <Link style={{ textDecoration: "none" }} to="/login">
+        <Button variant="contained" color="secondary" size="large">
+            LogIn
+    </Button>
+        <br />
+        <br />
+    </Link>
+}
+
+function RegisterButton() {
+    return <Link style={{ textDecoration: "none" }} to="/signup">
+        <Button variant="contained" color="secondary" size="large">
+            SignUp
+    </Button>
+    </Link>
+}
+
+function UserButton() {
+    return <Link style={{ textDecoration: "none" }} to="/users">
+    <Button variant="contained" color="secondary" size="large">
+        Users
+    </Button>
+</Link>
+}
+ 
 export default Home;
