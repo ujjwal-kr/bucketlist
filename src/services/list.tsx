@@ -6,8 +6,8 @@ export const ListService = {
         return axios.get(ENDPOINT+"lists/"+id)
     },
 
-    postItem: async function(token: string, text: string, description: string) {
-        return axios.post(ENDPOINT+"lists", {text, description}, {
+    postItem: async function(id: string, token: string, text: string, description: string) {
+        return axios.post(ENDPOINT+"lists/"+id, {text, description}, {
             headers: {'authorization': token}
         })
     },
