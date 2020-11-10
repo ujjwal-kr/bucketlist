@@ -26,7 +26,7 @@ class UserId extends React.Component<Props, State> {
     componentDidMount() {
         if(this.props.match.params) {
             UserService.getUser(this.props.match.params.id).then(res => {
-                this.setState({ user: res.data.user, list: res.data.list })
+                this.setState({ user: res.data.user, list: res.data.lists })
             }).catch(e => {
                 alert('something went wrong')
                 this.props.history.push('/')
@@ -39,6 +39,7 @@ class UserId extends React.Component<Props, State> {
             <div>
                 {this.state.user.username} <br/>
                 {this.state.user.id}
+                {this.state.list.map((val, k) => <li>{val.description}</li>)}
             </div>
         )
     }
