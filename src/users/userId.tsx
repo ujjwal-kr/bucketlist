@@ -19,7 +19,7 @@ interface State {
 class UserId extends React.Component<Props, State> {
 
     state: State = {
-        user: {},
+        user: {username:'', id:''},
         list: []
     }
 
