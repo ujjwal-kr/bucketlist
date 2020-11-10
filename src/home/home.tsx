@@ -3,29 +3,33 @@ import { Brand, BrandText, Main, Overlay, Wrapper } from "../Components/app";
 import { Button } from "@material-ui/core";
 import { UserService } from "../services/user";
 import { Link } from "react-router-dom";
+import Loader from "../loader/loader";
 
 interface Props { }
 interface State {
     loggedOut: boolean;
     user: any; // TODO
+    loaded: boolean;
 }
 
 class Home extends React.Component<Props, State> {
     state: State = {
         loggedOut: true,
         user: null,
+        loaded: false,
     };
 
     async componentDidMount() {
         const token = localStorage.getItem("token");
         if (token) {
             await UserService.check(token).then((data) => {
-                this.setState({ loggedOut: false });
+                this.setState({ loggedOut: false, loaded: true });
             }).catch((e) => {
                 localStorage.removeItem("token");
+                this.setState({loaded:true})
             });
         } else {
-            this.setState({loggedOut: true})
+            this.setState({loggedOut: true, loaded: true})
         }
     }
 
@@ -51,6 +55,7 @@ class Home extends React.Component<Props, State> {
                         : <UserButton />
                     }
                 </Wrapper>
+                {this.state.loaded ? null :<Loader />}
             </Overlay>
         </Main>;
     }
