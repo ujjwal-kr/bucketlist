@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserService } from '../services/user';
-import { List, ListItem, ListItemProps } from '@material-ui/core';
+import { List, ListItem } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 interface Props {
