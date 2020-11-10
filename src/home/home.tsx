@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 
 interface Props { }
 interface State {
-    loggedIn: boolean;
+    loggedOut: boolean;
     user: any; // TODO
 }
 
 class Home extends React.Component<Props, State> {
     state: State = {
-        loggedIn: false,
+        loggedOut: true,
         user: null,
     };
 
@@ -20,10 +20,12 @@ class Home extends React.Component<Props, State> {
         const token = localStorage.getItem("token");
         if (token) {
             await UserService.check(token).then((data) => {
-                this.setState({ loggedIn: true });
+                this.setState({ loggedOut: false });
             }).catch((e) => {
                 localStorage.removeItem("token");
             });
+        } else {
+            this.setState({loggedOut: true})
         }
     }
 
@@ -33,20 +35,20 @@ class Home extends React.Component<Props, State> {
                 <Wrapper className="animate__animated animate__zoomIn animate__faster">
                     <Brand className="branding">Bucketlist</Brand>
                     <br />
-                    {this.state.loggedIn
+                    {this.state.loggedOut
                         ? <BrandText className="quicktext">
-                            Welcome Back !
-                          </BrandText>
+                        Welcome, this is in testing stage so you wont be able to register
+                        unless you are a tester. You can view the source code here.
+                  </BrandText>
 
                         : <BrandText className="quicktext">
-                            Welcome, this is in testing stage so you wont be able to register
-                            unless you are a tester. You can view the source code here.
-                          </BrandText>
+                        Welcome Back !
+                  </BrandText>
                     }
                     <br />
-                    {this.state.loggedIn
-                        ? <UserButton />
-                        : <div><LoginButton /> <RegisterButton /></div>
+                    {this.state.loggedOut
+                        ? <div><LoginButton /> <RegisterButton /></div>
+                        : <UserButton />
                     }
                 </Wrapper>
             </Overlay>
