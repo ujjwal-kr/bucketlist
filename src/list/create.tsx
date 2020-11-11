@@ -4,6 +4,7 @@ import { Heading } from '../Components/auth';
 import { useFormik } from 'formik';
 import { ListService } from '../services/list';
 import { TextField, Button } from '@material-ui/core';
+import Loader from '../loader/loader';
 
 interface Props {
     history: any;
@@ -13,6 +14,7 @@ const CreateList = ({history}: Props) => {
 
     const [token, setToken] = useState("")
     const [id, setID] = useState("")
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const token = localStorage.getItem("token")!
@@ -27,10 +29,12 @@ const CreateList = ({history}: Props) => {
             description: ""
         },
         onSubmit: (values) => {
+            setLoading(true)
             ListService.postItem(id,token, values.description, values.text).then(res => {
+                setLoading(false)
                 history.push("/users")
             }).catch(e => {
-                console.log(e)
+                setLoading(false)
                 alert("Invalid input or login error")
             })
         }
@@ -65,8 +69,9 @@ const CreateList = ({history}: Props) => {
                     />
                     <br /> <br />
                     
-                    <Button size="large" variant="contained" color="secondary" type="submit">Submit</Button>
+                    <Button disabled={loading} size="large" variant="contained" color="secondary" type="submit">Submit</Button>
                 </form>
+                {loading ? <Loader /> :null}
             </Overlay>
         </Main>
     )
