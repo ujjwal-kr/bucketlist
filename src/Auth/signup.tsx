@@ -6,10 +6,12 @@ import { useFormik } from "formik";
 
 import { UserService } from '../services/user';
 import { Redirect } from 'react-router-dom';
+import Loader from '../loader/loader';
 
 const Signup: FunctionComponent = () => {
 
     const [redirect, setRedirect] = useState(false)
+    const [loading, setLoading] = useState(false)
     const formik = useFormik({ 
         initialValues: {
             username: "",
@@ -18,15 +20,18 @@ const Signup: FunctionComponent = () => {
             taskCode: "",
         },
         onSubmit: values => {
+            setLoading(true)
             UserService.register({
                 username: values.username, 
                 password: values.password, 
                 entryCode: values.entryCode,
                 taskCode: values.taskCode,
             }).then(res => {
+                setLoading(false)
                 setRedirect(true)
             }).catch(e => {
                 alert("Check Your Input")
+                setLoading(false)
             })
         }
      })
@@ -79,8 +84,10 @@ const Signup: FunctionComponent = () => {
                         style={{ background: 'white' }}
                         color="secondary"
                     /> <br /><br />
-                    <Button size="large" variant="contained" color="secondary" type="submit">Submit</Button>
+                    <Button disabled={loading} size="large" variant="contained" color="secondary" type="submit">Submit</Button>
                 </form>
+                <br/>
+                {loading ? <Loader /> :null}
             </Overlay>
         </Main>
     )
