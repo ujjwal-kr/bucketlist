@@ -32,7 +32,7 @@ const CreateList = ({history}: Props) => {
             setLoading(true)
             ListService.postItem(id,token, values.description, values.text).then(res => {
                 setLoading(false)
-                history.push("/users")
+                history.push("/users/"+id)
             }).catch(e => {
                 setLoading(false)
                 alert("Invalid input or login error")
@@ -49,6 +49,7 @@ const CreateList = ({history}: Props) => {
                     <TextField
                         onChange={formik.handleChange}
                         value={formik.values.text}
+                        required
                         name="text"
                         label="Title"
                         variant="filled"
@@ -61,6 +62,7 @@ const CreateList = ({history}: Props) => {
                         onChange={formik.handleChange}
                         value={formik.values.description}
                         name="description"
+                        required
                         label="Description"
                         variant="filled"
                         style={{ background: 'white', width: 60+'%' }}
