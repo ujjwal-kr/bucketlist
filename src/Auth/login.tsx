@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { Main, Overlay } from "../Components/app";
 import { Heading } from "../Components/auth";
 import { Button, TextField } from "@material-ui/core";
@@ -6,15 +6,18 @@ import { useFormik } from "formik";
 import { Redirect } from 'react-router-dom';
 
 import { UserService } from "../services/user";
+import Loader from "../loader/loader";
 
 const Login: FunctionComponent  = () => {
     const [redirect, setRedirect] = useState(false)
+    const [loading, setLoading] = useState(false)
     const formik = useFormik({
         initialValues: {
             username: "",
             password: "",
         },
         onSubmit: (values) => {
+            setLoading(true)
             UserService.login({ 
                 username: values.username, 
                 password: values.password 
@@ -23,9 +26,11 @@ const Login: FunctionComponent  = () => {
                 localStorage.setItem("token", token)
                 localStorage.setItem("name", name)
                 localStorage.setItem("id", id)
+                setLoading(false)
                 setRedirect(true)
             }).catch(e => {
                 alert("Check Your input")
+                setLoading(false)
             })
         },
     });
@@ -60,8 +65,10 @@ const Login: FunctionComponent  = () => {
                         color="secondary"
                         type="password"
                     /> <br /><br />
-                    <Button size="large" variant="contained" color="secondary" type="submit">Submit</Button>
+                    <Button disabled={loading} size="large" variant="contained" color="secondary" type="submit">Submit</Button>
                 </form>
+                <br/>
+                {loading ? <Loader /> :null}
             </Overlay>
         </Main>
     );
