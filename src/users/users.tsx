@@ -37,7 +37,8 @@ class UsersComponent extends React.Component<Props, State> {
     render() {
         return (
             <div>
-                {this.state.users.map((i, d) => <ListConstructor link={'/users/' + i.username} name={i.username} />)}
+                <h1 style={{ textAlign:'center' }} className="quicktext">Users</h1>
+                {this.state.users.map((i, d) => <div><ListConstructor link={'/users/' + i.username} name={i.username} /></div>)}
             </div>
         )
     }
@@ -53,14 +54,16 @@ interface ListState {
 
 class ListConstructor extends React.Component<ListProps, ListState> {
     render() {
-        return (
+        return ( 
+        <div>
             <List>
                 <Link to={this.props.link} style={{textDecoration: 'none'}}>
-                    <ListItem button style={{ padding: 5 + '%' }}>
+                    <ListItem className="quicktext" button style={{ padding: 5 + '%' }}>
                         {this.props.name}
                     </ListItem>
                 </Link>
             </List>
+        </div>
         )
     }
 }
