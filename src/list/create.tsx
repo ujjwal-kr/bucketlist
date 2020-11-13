@@ -30,7 +30,7 @@ const CreateList = ({history}: Props) => {
         },
         onSubmit: (values) => {
             setLoading(true)
-            ListService.postItem(id,token, values.description, values.text).then(res => {
+            ListService.postItem(id, token, values.text, values.description).then(res => {
                 setLoading(false)
                 history.push("/users/"+id)
             }).catch(e => {
