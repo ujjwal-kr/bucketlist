@@ -2,6 +2,7 @@ import React from 'react';
 import { User } from './users';
 import { UserService } from '../services/user';
 import { List } from '../list/list';
+import {Username, Lists, Item} from '../Components/user';
  
 interface Props {
     history: any,
@@ -37,12 +38,19 @@ class UserId extends React.Component<Props, State> {
     render() {
         return (
             <div>
-                {this.state.user.username} <br/>
-                {this.state.user.id}
-                {this.state.list.map((val, k) => <li>{val.description}</li>)}
+                <Username className="quicktext">{this.state.user.username}</Username>
+                <Lists>
+                    {this.state.list.map((val, k) => <ListsConstructor text={val.text} link={val.id} />)}
+                </Lists>
             </div>
         )
     }
+}
+
+function ListsConstructor({text, link}: any) {
+    return (
+        <Item className="fira" >{text}</Item>
+    )
 }
 
 export default UserId;

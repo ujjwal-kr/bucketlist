@@ -8,6 +8,10 @@ export const Lists = styled.ul`
     padding: 2%;
 `
 
-export const List = styled.li`
-    background: pink;
+export const Item = styled.li`
+    background: rgba(255, 16, 83, .5);
+    text-decoration: underline;
+    margin-top: 1em;
+    font-size: 1.2em;
+    color: #333333;
 `
