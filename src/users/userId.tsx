@@ -2,6 +2,7 @@ import React from 'react';
 import { User } from './users';
 import { UserService } from '../services/user';
 import { List } from '../list/list';
+import {Link} from 'react-router-dom';
 import {Username, Lists, Item} from '../Components/user';
  
 interface Props {
@@ -40,7 +41,7 @@ class UserId extends React.Component<Props, State> {
             <div>
                 <Username className="quicktext">{this.state.user.username}</Username>
                 <Lists>
-                    {this.state.list.map((val, k) => <ListsConstructor text={val.text} link={val.id} />)}
+                    {this.state.list.map((val, k) => <ListsConstructor text={val.text} link={'/lists/'+val.id} />)}
                 </Lists>
             </div>
         )
@@ -49,7 +50,7 @@ class UserId extends React.Component<Props, State> {
 
 function ListsConstructor({text, link}: any) {
     return (
-        <Item className="fira" >{text}</Item>
+        <Item className="fira" ><Link style={{color: '#333333'}} to={link}>{text}</Link></Item>
     )
 }
 
