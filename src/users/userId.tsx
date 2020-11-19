@@ -2,8 +2,9 @@ import React from 'react';
 import { User } from './users';
 import { UserService } from '../services/user';
 import { List } from '../list/list';
-import {Link} from 'react-router-dom';
-import {Username, Lists, Item} from '../Components/user';
+import { Link } from 'react-router-dom';
+import { Username, Lists, Item } from '../Components/user';
+import Loader from '../loader/loader';
  
 interface Props {
     history: any,
@@ -15,6 +16,7 @@ interface Props {
 interface State {
     user: User;
     list: List[];
+    loading: boolean;
 }
 
 
@@ -22,13 +24,14 @@ class UserId extends React.Component<Props, State> {
 
     state: State = {
         user: {username:'', id:''},
+        loading: true,
         list: []
     }
 
     componentDidMount() {
         if(this.props.match.params) {
             UserService.getUser(this.props.match.params.id).then(res => {
-                this.setState({ user: res.data.user, list: res.data.lists })
+                this.setState({ user: res.data.user, list: res.data.lists, loading: false })
             }).catch(e => {
                 alert('something went wrong')
                 this.props.history.push('/')
@@ -37,6 +40,10 @@ class UserId extends React.Component<Props, State> {
     }
 
     render() {
+        if (this.state.loading) {
+            return <div><br/><Loader /></div>
+        }
+
         return (
             <div>
                 <Username className="quicktext">{this.state.user.username}</Username>
