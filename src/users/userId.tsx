@@ -57,7 +57,7 @@ class UserId extends React.Component<Props, State> {
 
 function ListsConstructor({text, link}: any) {
     return (
-        <Item className="fira" ><Link style={{color: '#333333'}} to={link}>{text}</Link></Item>
+        <Item className="fira animate__animated animate__zoomIn animate__faster" ><Link style={{color: '#333333'}} to={link}>{text}</Link></Item>
     )
 }
 

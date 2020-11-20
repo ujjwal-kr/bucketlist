@@ -1,8 +1,19 @@
 import React from 'react';
+import { ListService } from '../services/list';
 
-interface Props {}
+interface Props {
+    history: any;
+    match: {
+        params: {
+            id: string;
+        }
+    }
+}
 
-interface State {}
+interface State {
+    loading: boolean;
+    list: List;
+}
 
 export interface List {
     text?: string;
@@ -11,7 +22,19 @@ export interface List {
 }
 
 class ListComponent extends React.Component<Props, State> {
-    state: State = {}
+    state: State = {
+        loading: true,
+        list: {}
+    }
+
+    componentDidMount() {
+        ListService.getLItem(this.props.match.params.id).then(res => {
+            this.setState({list: res.data, loading: false})
+        }).catch(e => {
+            alert("Something is not right")
+            this.props.history.push('/users')
+        })
+    }
 
     render() {
         return <h1>MEOW</h1>
