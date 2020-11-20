@@ -26,10 +26,12 @@ export interface List {
 }
 
 class ListComponent extends React.Component<Props, State> {
+    
     constructor(props: Props) {
         super(props);
         this.delete = this.delete.bind(this)
     }
+
     state: State = {
         loading: true,
         list: {},
@@ -52,7 +54,7 @@ class ListComponent extends React.Component<Props, State> {
         const token = localStorage.getItem("token")!
         ListService.deleteItem(this.props.match.params.id, token).then(res => {
             alert("Deleted")
-            this.props.history.push('/users'+this.state.list.userid)
+            this.props.history.push('/users/'+this.state.list.userid)
         }).catch(e => {
             alert("Something is not right")
         })
