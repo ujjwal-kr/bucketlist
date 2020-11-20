@@ -22,7 +22,7 @@ const CreateTask = ({history}: Props) => {
             const id = localStorage.getItem("name")!
             TasksService.postItem(token, id, values.text).then(res => {
                 setLoading(false)
-                history.push("/users")
+                history.push("/users/"+id)
             }).catch(e => {
                 alert("Something Went wrong")
                 setLoading(false)
