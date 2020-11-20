@@ -2,6 +2,7 @@ import React from 'react';
 import { ListService } from '../services/list';
 import {Username, Description, Text} from '../Components/list';
 import { Button } from '@material-ui/core';
+import Loader from '../loader/loader';
 
 interface Props {
     history: any;
@@ -61,6 +62,11 @@ class ListComponent extends React.Component<Props, State> {
     }
 
     render() {
+
+        if(this.state.loading) {
+            return <div><br/><Loader /></div>
+        }
+
         return (
             <main style={{padding: 2+'%'}}>
                 <Username className="quicktext">{this.state.list.userid}</Username>
