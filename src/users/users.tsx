@@ -2,12 +2,14 @@ import React from 'react';
 import { UserService } from '../services/user';
 import { List, ListItem } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import Loader from '../loader/loader';
 
 interface Props {
     history: any
 }
 interface State {
     users: User[];
+    loading: boolean;
 }
 
 export interface User {
@@ -17,7 +19,8 @@ export interface User {
 
 class UsersComponent extends React.Component<Props, State> {
     state: State = {
-        users: []
+        users: [],
+        loading: true,
     }
 
     componentDidMount() {
@@ -27,7 +30,8 @@ class UsersComponent extends React.Component<Props, State> {
         }
         UserService.getAll(token).then(res => {
             this.setState({
-                users: res.data
+                users: res.data,
+                loading: false
             })
         }).catch(e => {
             this.props.history.push('/')
@@ -35,6 +39,10 @@ class UsersComponent extends React.Component<Props, State> {
     }
 
     render() {
+        if(this.state.loading) {
+            return <Loader />
+        }
+        
         return (
             <div>
                 <h1 style={{ textAlign:'center' }} className="quicktext">Users</h1>
