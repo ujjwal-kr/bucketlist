@@ -29,7 +29,7 @@ const TaskCode: FunctionComponent<Props> = ({ match, history }) => {
 
     return <Main>
         <Overlay>
-        <Heading className="stylish animate__animated animate__zoomIn animate__faster">Task Code</Heading>
+        <Heading className="fira animate__animated animate__zoomIn animate__faster">Task Code</Heading>
                 <br />
                 <form onSubmit={formik.handleSubmit} style={{ textAlign: 'center' }} className="animate__animated animate__zoomIn animate__faster">
                     <TextField

@@ -9,9 +9,10 @@ import Signup from './Auth/signup';
 import Login from './Auth/login';
 import CreateList from './list/create';
 import CreateTask from './weekly/create';
+import TaskCode from './weekly/code';
+
 import 'animate.css';
 import './fonts.css'
-import TaskCode from './weekly/code';
 
 function App() {
   return (

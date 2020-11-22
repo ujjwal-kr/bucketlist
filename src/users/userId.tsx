@@ -19,6 +19,7 @@ interface State {
     list: List[];
     loading: boolean;
     task: boolean;
+    createButton: boolean;
 }
 
 
@@ -28,14 +29,17 @@ class UserId extends React.Component<Props, State> {
         user: { username: '', id: '' },
         loading: true,
         list: [],
-        task: false
+        task: false,
+        createButton: false
     }
 
     componentDidMount() {
+        const username = localStorage.getItem("name")
         if (localStorage.getItem("token")) this.setState({ task: true })
         if (this.props.match.params) {
             UserService.getUser(this.props.match.params.id).then(res => {
                 this.setState({ user: res.data.user, list: res.data.lists, loading: false })
+                if (this.state.user.username === username) return this.setState({createButton: true})
             }).catch(e => {
                 alert('something went wrong')
                 this.props.history.push('/')
@@ -52,8 +56,14 @@ class UserId extends React.Component<Props, State> {
             <div>
                 <Username className="quicktext">{this.state.user.username}</Username>
                 {this.state.task ? <div style={{ textAlign: "center" }}><br />
-                  <Link to={"/code/"+this.state.user.username}>
+                  <Link style={{textDecoration: "none"}} to={"/code/"+this.state.user.username}>
                     <Button color="secondary">Tasks</Button>
+                    <br/>
+                    {this.state.createButton ?
+                        <Link to="/create-list">
+                            <Button>Create List</Button>
+                        </Link>
+                    :null}
                   </Link>
                 </div> : null}
                 <Lists>
