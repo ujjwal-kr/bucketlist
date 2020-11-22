@@ -68,11 +68,11 @@ class ListComponent extends React.Component<Props, State> {
         }
 
         return (
-            <main style={{padding: 2+'%'}}>
+            <main style={{padding: 2+'%'}} className="animate__animated animate__zoomIn animate__faster">
                 <Username className="quicktext">{this.state.list.userid}</Username>
                 <Text className="quicktext">{this.state.list.text}</Text>
                 <Description className="fira" >{this.state.list.description}</Description>
-                {this.state.showDelete ? <Button onClick={this.delete} color="secondary" variant="outlined" style={{width: 100+'%'}}>Delete</Button> :null}
+                {this.state.showDelete ? <Button className="animate__animated animate__zoomIn animate__faster" onClick={this.delete} color="secondary" variant="outlined" style={{width: 100+'%'}}>Delete</Button> :null}
             </main>
         )
     }
