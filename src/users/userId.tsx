@@ -39,7 +39,7 @@ class UserId extends React.Component<Props, State> {
         if (this.props.match.params) {
             UserService.getUser(this.props.match.params.id).then(res => {
                 this.setState({ user: res.data.user, list: res.data.lists, loading: false })
-                if (this.state.user.username === username) return this.setState({createButton: true})
+                if (this.state.user.username === username) return this.setState({ createButton: true })
             }).catch(e => {
                 alert('something went wrong')
                 this.props.history.push('/')
@@ -56,16 +56,18 @@ class UserId extends React.Component<Props, State> {
             <div>
                 <Username className="quicktext">{this.state.user.username}</Username>
                 {this.state.task ? <div style={{ textAlign: "center" }}><br />
-                  <Link style={{textDecoration: "none"}} to={"/code/"+this.state.user.username}>
-                    <Button color="secondary">Tasks</Button>
-                    <br/>
+                    <Link style={{ textDecoration: "none" }} to={"/code/" + this.state.user.username}>
+                        <Button color="secondary">Tasks</Button>
+                    </Link>
+                </div> : null}
+                <br />
+                <div style={{ textAlign: "center" }}>
                     {this.state.createButton ?
-                        <Link style={{textDecoration: 'none'}} to="/create-list">
+                        <Link style={{ textDecoration: 'none' }} to="/create-list">
                             <Button>Create List</Button>
                         </Link>
-                    :null}
-                  </Link>
-                </div> : null}
+                        : null}
+                </div>
                 <Lists>
                     {this.state.list.map((val, k) => <ListsConstructor text={val.text} link={'/lists/' + val.id} />)}
                 </Lists>
@@ -76,8 +78,8 @@ class UserId extends React.Component<Props, State> {
 
 function ListsConstructor({ text, link }: any) {
     return (
-        <Paper style={{padding: 1+'rem', margin: '1em',}} elevation={5} className="fira animate__animated animate__zoomIn animate__faster">
-                    <Item style={{marginTop: -0+'em', padding:10+'px'}}><Link style={{ color: '#333333' }} to={link}>{text}</Link></Item>
+        <Paper style={{ padding: 1 + 'rem', margin: '1em', }} elevation={5} className="fira animate__animated animate__zoomIn animate__faster">
+            <Item style={{ marginTop: -0 + 'em', padding: 10 + 'px' }}><Link style={{ color: '#333333' }} to={link}>{text}</Link></Item>
         </Paper>
     )
 }
