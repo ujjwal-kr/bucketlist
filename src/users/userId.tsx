@@ -5,7 +5,8 @@ import { List } from '../list/list';
 import { Link } from 'react-router-dom';
 import { Username, Lists, Item } from '../Components/user';
 import Loader from '../loader/loader';
- 
+import { Button } from '@material-ui/core';
+
 interface Props {
     history: any,
     match: {
@@ -17,19 +18,22 @@ interface State {
     user: User;
     list: List[];
     loading: boolean;
+    task: boolean;
 }
 
 
 class UserId extends React.Component<Props, State> {
 
     state: State = {
-        user: {username:'', id:''},
+        user: { username: '', id: '' },
         loading: true,
-        list: []
+        list: [],
+        task: false
     }
 
     componentDidMount() {
-        if(this.props.match.params) {
+        if (localStorage.getItem("token")) this.setState({ task: true })
+        if (this.props.match.params) {
             UserService.getUser(this.props.match.params.id).then(res => {
                 this.setState({ user: res.data.user, list: res.data.lists, loading: false })
             }).catch(e => {
@@ -41,23 +45,28 @@ class UserId extends React.Component<Props, State> {
 
     render() {
         if (this.state.loading) {
-            return <div><br/><Loader /></div>
+            return <div><br /><Loader /></div>
         }
 
         return (
             <div>
                 <Username className="quicktext">{this.state.user.username}</Username>
+                {this.state.task ? <div style={{ textAlign: "center" }}><br />
+                  <Link to={"/code/"+this.state.user.username}>
+                    <Button color="secondary">Tasks</Button>
+                  </Link>
+                </div> : null}
                 <Lists>
-                    {this.state.list.map((val, k) => <ListsConstructor text={val.text} link={'/lists/'+val.id} />)}
+                    {this.state.list.map((val, k) => <ListsConstructor text={val.text} link={'/lists/' + val.id} />)}
                 </Lists>
             </div>
         )
     }
 }
 
-function ListsConstructor({text, link}: any) {
+function ListsConstructor({ text, link }: any) {
     return (
-        <Item className="fira animate__animated animate__zoomIn animate__faster" ><Link style={{color: '#333333'}} to={link}>{text}</Link></Item>
+        <Item className="fira animate__animated animate__zoomIn animate__faster" ><Link style={{ color: '#333333' }} to={link}>{text}</Link></Item>
     )
 }
 
