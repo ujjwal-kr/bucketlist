@@ -60,7 +60,7 @@ class UserId extends React.Component<Props, State> {
                     <Button color="secondary">Tasks</Button>
                     <br/>
                     {this.state.createButton ?
-                        <Link to="/create-list">
+                        <Link style={{textDecoration: 'none'}} to="/create-list">
                             <Button>Create List</Button>
                         </Link>
                     :null}

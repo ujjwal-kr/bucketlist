@@ -43,7 +43,7 @@ const CreateList = ({history}: Props) => {
     return (
         <Main>
             <Overlay>
-                <Heading className="stylish animate__animated animate__zoomIn animate__faster">Create List</Heading>
+                <Heading className="branding animate__animated animate__zoomIn animate__faster">Create List</Heading>
                 <br />
                 <form onSubmit={formik.handleSubmit} style={{ textAlign: 'center' }} className="animate__animated animate__zoomIn animate__faster">
                     <TextField
@@ -53,7 +53,7 @@ const CreateList = ({history}: Props) => {
                         name="text"
                         label="Title"
                         variant="filled"
-                        style={{ background: 'white', width: 60+'%' }}
+                        style={{ background: 'white', width: 80+'%' }}
                         color="secondary"
                     />
                     <br /> <br />
@@ -65,7 +65,7 @@ const CreateList = ({history}: Props) => {
                         required
                         label="Description"
                         variant="filled"
-                        style={{ background: 'white', width: 60+'%' }}
+                        style={{ background: 'white', width: 80+'%' }}
                         color="secondary"
                         rows={10}
                     />
