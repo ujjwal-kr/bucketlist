@@ -5,7 +5,7 @@ import { List } from '../list/list';
 import { Link } from 'react-router-dom';
 import { Username, Lists, Item } from '../Components/user';
 import Loader from '../loader/loader';
-import { Button } from '@material-ui/core';
+import { Button, Paper } from '@material-ui/core';
 
 interface Props {
     history: any,
@@ -76,7 +76,9 @@ class UserId extends React.Component<Props, State> {
 
 function ListsConstructor({ text, link }: any) {
     return (
-        <Item className="fira animate__animated animate__zoomIn animate__faster" ><Link style={{ color: '#333333' }} to={link}>{text}</Link></Item>
+        <Paper style={{padding: 1+'rem', margin: '1em',}} elevation={5} className="fira animate__animated animate__zoomIn animate__faster">
+                    <Item style={{marginTop: -0+'em', padding:10+'px'}}><Link style={{ color: '#333333' }} to={link}>{text}</Link></Item>
+        </Paper>
     )
 }
 
