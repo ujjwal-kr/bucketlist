@@ -2,6 +2,8 @@ import React from 'react';
 import { UserService } from '../services/user';
 import { User } from '../users/users';
 import Loader from '../loader/loader';
+import { Username, Text } from '../Components/list';
+import { Button, Paper } from '@material-ui/core';
 
 interface Props {
     history: any;
@@ -53,10 +55,16 @@ class Tasks extends React.Component<Props, State>{
         if(this.state.loading) {
             return (<div><br/><Loader /></div>)
         }
-        
+
         return (
             <div>
-                Tasks
+                <Username className="quicktext">{this.state.user.username}</Username>
+                <Text className="fira">Tasks</Text>
+                <div style={{textAlign: 'center'}}>
+                    <Button color="secondary">Create Task</Button>
+                </div>
+
+        {this.state.tasks.map((task, i) => <div><Paper elevation={2} className="fira" style={{padding: 2.1+'%', fontSize: 1.1+'em'}}>{task.text}</Paper><br/></div>)}
             </div>
         )
     }
