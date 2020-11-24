@@ -4,6 +4,7 @@ import { User } from '../users/users';
 import Loader from '../loader/loader';
 import { Username, Text } from '../Components/list';
 import { Button, Paper } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 interface Props {
     history: any;
@@ -61,7 +62,9 @@ class Tasks extends React.Component<Props, State>{
                 <Username className="quicktext">{this.state.user.username}</Username>
                 <Text className="fira">Tasks</Text>
                 <div style={{textAlign: 'center'}}>
-                    <Button color="secondary">Create Task</Button>
+                    <Link to="/create-task" style={{textDecoration: 'none'}}>
+                        <Button color="secondary">Create Task</Button>
+                    </Link>
                 </div>
 
         {this.state.tasks.map((task, i) => <div><Paper elevation={2} className="fira" style={{padding: 2.1+'%', fontSize: 1.1+'em'}}>{task.text}</Paper><br/></div>)}
