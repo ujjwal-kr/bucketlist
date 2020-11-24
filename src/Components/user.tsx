@@ -9,7 +9,7 @@ export const Lists = styled.div`
 `
 
 export const Item = styled.div`
-    background: rgba(255, 16, 83, .5);
+    background: rgb(255, 251, 32);
     text-decoration: underline;
     margin-top: 1em;
     font-size: 1.2em;
